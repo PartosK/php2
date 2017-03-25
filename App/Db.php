@@ -1,13 +1,17 @@
 <?php
 
+namespace App;
+
 class Db
 {
+
+    use Singleton;
 
     protected $dbh;
 
     public function __construct()
     {
-        $this->dbh = new PDO('mysql:host=localhost;dbname=php2', 'test', 'q123');
+        $this->dbh = new \PDO('mysql:host=localhost;dbname=php2', 'test', 'q123');
         $this->dbh->exec("SET NAMES utf8");
     }
 
@@ -15,8 +19,9 @@ class Db
     {
         $sth = $this->dbh->prepare($sql);
         $res = $sth->execute($params);
-        if ($res) {
-            $data = $sth->fetchAll(PDO::FETCH_CLASS,$class);
+        $data = $sth->fetchAll(\PDO::FETCH_CLASS,$class);
+
+        if (true == $data) {
             return $data;
         } else {
             return false;
@@ -29,4 +34,8 @@ class Db
         return $res = $sth->execute($params);
     }
 
+    public function lastInsertId()
+    {
+        return $this->dbh->lastInsertId();
+    }
 }

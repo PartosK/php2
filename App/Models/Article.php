@@ -1,7 +1,8 @@
 <?php
 
-require_once __DIR__ . '/Db.php';
-require_once __DIR__ . '/Model.php';
+namespace App\Models;
+
+use App\Model;
 
 class Article
     extends Model
@@ -15,7 +16,7 @@ class Article
 
     public static function lastNews()
     {
-        $db  = new Db;
+        $db  = \App\Db::instance();
         $sql = 'SELECT * FROM ' . self::TABLE . ' WHERE 1 ORDER BY id DESC LIMIT 3';
         $res = $db->query($sql, [], self::class);
 

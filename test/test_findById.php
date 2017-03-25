@@ -1,8 +1,8 @@
 <?php
 
-require __DIR__ . '/../Article.php';
+require_once __DIR__ . '/../autoload.php';
 
-$data = Article::findById(6);
+$data = App\Models\Article::findById(3);
 
 echo '<pre>';
 var_dump($data);
