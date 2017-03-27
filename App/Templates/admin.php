@@ -12,13 +12,13 @@ $data = \App\Models\Article::findAll();
 
 ?>
 <form>
-    <a href="/App/Templates/Article.php?insert=1" >Новая новость</a>
+    <a href="/article.php?insert=1" >Новая новость</a>
 </form>
 <ul>
     <?php  foreach ($data as $news ){   ?>
         <li>
             <form method="POST" action="admin.php" >
-                <a href="/App/Templates/Article.php?update=<?php echo $news->id; ?>" ><?php echo $news->title; ?></a>
+                <a href="/article.php?update=<?php echo $news->id; ?>" ><?php echo $news->title; ?></a>
                 <button name="deleted" value="<?php echo $news->id; ?>">Удалить</button>
            </form>
         </li>

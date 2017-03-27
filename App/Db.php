@@ -21,17 +21,17 @@ class Db
         $res = $sth->execute($params);
         $data = $sth->fetchAll(\PDO::FETCH_CLASS,$class);
 
-        if (true == $data) {
-            return $data;
-        } else {
+        if ( false === $data) {
             return false;
+        } else {
+            return $data;
         }
     }
 
     public function  execute($sql, $params=[]):bool
     {
         $sth = $this->dbh->prepare($sql);
-        return $res = $sth->execute($params);
+        return $sth->execute($params);
     }
 
     public function lastInsertId()

@@ -6,7 +6,7 @@
 </head>
 <body>
 <?php
-require_once __DIR__ . '/../../autoload.php';
+require_once __DIR__ . '/autoload.php';
 
 if (isset($_GET['id']))
 {
@@ -31,7 +31,7 @@ elseif (isset($_GET['update']))
     $data = \App\Models\Article::findById($id);
 
     ?>
-    <form action="Article.php"  method="POST">
+    <form action="article.php"  method="POST">
         <header>
             <h1>
                 Заголовок:<input type="text" name="title" value="<?php echo $data->title; ?>" >
@@ -47,7 +47,7 @@ elseif (isset($_GET['update']))
 elseif(isset($_GET['insert']))
 { ?>
 
-    <form action="Article.php" method="POST">
+    <form action="article.php" method="POST">
         Заголовок:<input type="text" name="title" ><br>
         Новость:<textarea  name="lead" ></textarea>
         <button name="save">Сохранить</button>

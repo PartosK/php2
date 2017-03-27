@@ -16,7 +16,7 @@ $data = App\Models\Article::lastNews();  ?>
 <ul>
      <?php  foreach ($data as $news ){   ?>
      <li>
-          <a href="/App/Templates/Article.php?id=<?php echo $news->id; ?>" ><?php echo $news->title; ?></a>
+          <a href="/article.php?id=<?php echo $news->id; ?>" ><?php echo $news->title; ?></a>
      </li>
       <?php  }  ?>
 </ul>

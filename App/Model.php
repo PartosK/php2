@@ -22,9 +22,12 @@ abstract class Model
         $sql = 'SELECT * FROM ' . static::TABLE . ' WHERE id = :id';
         $res = $db->query($sql, [':id' => $id], static::class)[0];
 
-        if ( true == $res){ return $res;}
-        else{ return false;}
-
+        if ( false === $res) {
+            return false;
+        } else {
+            return $res;
+        }
+       
     }
 
     protected function insert()
