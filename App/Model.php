@@ -20,12 +20,12 @@ abstract class Model
     {
         $db  =  \App\Db::instance();
         $sql = 'SELECT * FROM ' . static::TABLE . ' WHERE id = :id';
-        $res = $db->query($sql, [':id' => $id], static::class)[0];
+        $res = $db->query($sql, [':id' => $id], static::class);
 
         if ( false === $res) {
             return false;
         } else {
-            return $res;
+            return $res[0];
         }
        
     }
