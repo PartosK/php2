@@ -93,7 +93,7 @@ abstract class Model
 
     public function save()
     {
-        if ( null == $this->id){
+        if ( null === $this->id){
             $this->insert();
         }
         else{
@@ -103,14 +103,11 @@ abstract class Model
 
     public function delete()
     {
-        $params  = [];
 
-        foreach ($this as $key => $val)
-        {
-            if ('id' != $key) continue;
-            $params[':' . $key] = $val;
+        $id             = $this->id;
+        $params         = [];
+        $params[':id' ] = $id;
 
-        }
 
         $db  =  \App\Db::instance();
 

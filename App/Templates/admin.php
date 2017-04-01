@@ -5,12 +5,7 @@
     <title>Админка</title>
 </head>
 <body>
-<?php
-require_once __DIR__ . '/../../autoload.php';
 
-$data = \App\Models\Article::findAll();
-
-?>
 <form>
     <a href="/article.php?insert=1" >Новая новость</a>
 </form>
@@ -36,7 +31,7 @@ if (isset($_POST['deleted']))
     $del = new App\Models\Article();
     $del->id = $_POST['deleted'];
     $del->delete();
-    header('Location: /App/Templates/admin.php');
+    header('Location: /admin.php');
 }
 
 ?>

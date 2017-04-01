@@ -11,7 +11,15 @@ class Db
 
     public function __construct()
     {
-        $this->dbh = new \PDO('mysql:host=localhost;dbname=php2', 'test', 'q123');
+       $config = \App\Config::instance();
+       $config_arr = $config->getData();
+
+       $db = $config_arr['db'];
+       $host = $config_arr['host'];
+       $user = $config_arr['user'];
+       $pass = $config_arr['pass'];
+
+        $this->dbh = new \PDO('mysql:host='.$host.'; dbname='.$db , $user, $pass);
         $this->dbh->exec("SET NAMES utf8");
     }
 
