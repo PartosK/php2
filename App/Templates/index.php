@@ -5,7 +5,6 @@
     <title>Последние новости</title>
 </head>
 <body>
-<a href="/admin.php" >Админка</a>
 </li>
 
 

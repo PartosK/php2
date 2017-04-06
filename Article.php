@@ -1,26 +1,14 @@
 <?php
 
-require_once __DIR__ . '/Db.php';
-require_once __DIR__ . '/Model.php';
+require_once __DIR__ . '/autoload.php';
 
-class Article
-    extends Model
+
+if (isset($_GET['id']))
 {
+$id = $_GET['id'];
 
-    protected const TABLE = 'news';
+$data = \App\Models\Article::findById($id);
 
-    public $title;
-    public $lead;
-
-
-    public static function lastNews()
-    {
-        $db  = new Db;
-        $sql = 'SELECT * FROM ' . self::TABLE . ' WHERE 1 ORDER BY id DESC LIMIT 3';
-        $res = $db->query($sql, [], self::class);
-
-        if ($res){ return $res;}
-        else{ return false;}
-    }
+include __DIR__ . '/App/Templates/article.php';
 
 }

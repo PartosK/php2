@@ -16,12 +16,16 @@ class Article
 
     public static function lastNews()
     {
-        $db  = \App\Db::instance();
+        $db  = new \App\Db;
         $sql = 'SELECT * FROM ' . self::TABLE . ' WHERE 1 ORDER BY id DESC LIMIT 3';
         $res = $db->query($sql, [], self::class);
 
-        if ($res){ return $res;}
-        else{ return false;}
+        if ( false === $res){
+            return false;
+        }
+        else{
+            return $res;
+        }
     }
 
 }
