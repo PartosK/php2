@@ -18,6 +18,10 @@ if ((isset($id) AND (false !== $data) ))
     <article>
         <?php echo $data->lead; ?>
     </article>
+  Автор:  <?php if ( null !== $data->author)
+                 {
+                     echo $data->author->author;
+                 } ?>
 <?php }
 else{   ?>
 

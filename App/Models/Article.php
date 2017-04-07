@@ -24,4 +24,19 @@ class Article
         else{ return false;}
     }
 
+    /**
+     * @param $name
+     * @return author
+     */
+    public function __get($name)
+    {
+        if ($name == 'author'){
+            if ($this->author_id !== null){
+               return \App\Models\Authors::findById($this->author_id);
+
+            }
+
+        }
+    }
+
 }
