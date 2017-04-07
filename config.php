@@ -1,7 +1,9 @@
 <?php
- return $config = array(
-     'host'   => 'localhost',
-     'db' => 'php2',
-     'user'   => 'test',
-     'pass'   => 'q123'
+ return  array(
+     "db" =>[
+               'host'   => 'localhost',
+               'dbname' => 'php2',
+               'user'   => 'test',
+               'pass'   => 'q123'
+            ]
  );

@@ -7,7 +7,7 @@
 <body>
 <?php
 
-if (isset($id))
+if ((isset($id) AND (false !== $data) ))
 {
     ?>
     <header>
@@ -19,37 +19,10 @@ if (isset($id))
         <?php echo $data->lead; ?>
     </article>
 <?php }
-elseif (isset($update_id))
-{
-    ?>
-    <form action="/article.php" method="POST">
-        <header>
-            <h1>
-                Заголовок:<input type="text" name="title" value="<?php echo $data->title; ?>" >
-            </h1>
-        </header>
-        <article>
-            Новость:<textarea  name="lead" ><?php echo $data->lead; ?></textarea>
-        </article>
-        <button name="save">Сохранить</button>
-        <input type="hidden" name="id" value="<?php echo $data->id; ?>" >
-    </form>
-<?php }
-else
-{ ?>
+else{   ?>
 
-    <form action="article.php" method="POST">
-        Заголовок:<input type="text" name="title" ><br>
-        Новость:<textarea  name="lead" ></textarea>
-        <button name="save">Сохранить</button>
-    </form>
+Нет такой новости: <a href="/index.php" >Главная страница</a>
+
 <?php } ?>
-
-
 </body>
 </html>
-
-<?php
-
-
-?>

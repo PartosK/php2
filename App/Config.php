@@ -2,20 +2,23 @@
 
 namespace App;
 
-
+/**
+ * Class Config
+ * @package App
+ */
 class Config
 {
     use Singleton;
 
+    /**
+     * @var array|mixed $data
+     */
     public $data = [];
 
-    /**
-     * @return array
-     */
-    public function getData(): array
-    {   $config_array = include __DIR__. '/../config.php';
-
-        return $this->data = $config_array;
+    protected function __construct()
+    {
+        return $this->data = include __DIR__. '/../config.php';
     }
+
 
 }

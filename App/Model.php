@@ -22,7 +22,7 @@ abstract class Model
         $sql = 'SELECT * FROM ' . static::TABLE . ' WHERE id = :id';
         $res = $db->query($sql, [':id' => $id], static::class);
 
-        if ( false === $res) {
+        if (empty($res) ) {
             return false;
         } else {
             return $res[0];
@@ -39,7 +39,9 @@ abstract class Model
 
         foreach ($this as $key => $val)
         {
-            if ('id' === $key){ continue; }
+            if ('id' === $key){
+                continue;
+            }
 
             $params[':' . $key] = $val;
             $key_sql[]          = $key;
@@ -54,7 +56,6 @@ abstract class Model
               ' VALUES ' .
               '(' . implode(',', $val_sql) . ')';
 
-       // var_dump($sql);
 
         $res = $db->execute($sql, $params);
 
@@ -74,7 +75,9 @@ abstract class Model
         {
             $params[':' . $key] = $val;
 
-            if ('id' === $key){ continue; }
+            if ('id' === $key){
+                continue;
+            }
 
             $val_sql[] = $key . '=:' . $key;
         }
