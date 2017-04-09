@@ -2,12 +2,9 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Последние новости</title>
+    <title>Все новости</title>
 </head>
 <body>
-<a href="/Admin" >Админка</a>
-</br>
-<a href="/AllNews" >Читать все новости</a>
 <ul>
      <?php  foreach ($data as $news ){   ?>
      <li>

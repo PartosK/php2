@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<form action="/admin.php" method="POST">
+<form action="/Admin/Save/" method="POST">
     <header>
         <h1>
             Заголовок:<input type="text" name="title" value="<?php echo $data->title; ?>" >
