@@ -1,12 +1,12 @@
 <?php
 
-    require_once __DIR__ . '/autoload.php';
+    require_once __DIR__ . '/../../autoload.php';
 
     $data = \App\Models\Article::findAll();
 
-    include  __DIR__ . '/App/Templates/admin.php';
+    include __DIR__ . '/../Templates/admin/index.php';
 
-
+/*
     if(isset($_GET['insert'])) {
 
         include __DIR__ . '/App/Templates/adminInsert.php';
@@ -17,7 +17,7 @@
 
          $data = \App\Models\Article::findById($update_id);
 
-         include __DIR__ . '/App/Templates/adminEdit.php';
+         include __DIR__ . '/App/Templates/adminUpdate.php';
 
      }
 
@@ -26,7 +26,7 @@
     $del = new App\Models\Article();
     $del->id = $_POST['deleted'];
     $del->delete();
-    header('Location: /admin.php');
+    header('Location: /index.php');
 
     }
 
@@ -45,6 +45,6 @@
     $news->lead  = $_POST['lead'];
     $news->id    = $id;
     $news->save();
-    header('Location: /admin.php');
+    header('Location: /index.php');
 
-    }
+    }*/

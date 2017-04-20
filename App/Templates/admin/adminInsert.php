@@ -5,7 +5,7 @@
     <title>Добавить новость</title>
 </head>
 <body>
-<form action="/admin.php" method="POST">
+<form action="/App/admin/insert_article.php" method="POST">
     Заголовок:<input type="text" name="title" ><br>
     Новость:<textarea  name="lead" ></textarea>
     <button name="save">Сохранить</button>
