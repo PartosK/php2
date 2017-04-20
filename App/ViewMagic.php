@@ -23,6 +23,6 @@ trait ViewMagic
 
     public function __unset($name)
     {
-        unset($this->$name);
+        unset($this->data[$name]);
     }
 }

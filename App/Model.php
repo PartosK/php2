@@ -107,16 +107,11 @@ abstract class Model
     public function delete()
     {
 
-        $id             = $this->id;
-        $params         = [];
-        $params[':id' ] = $id;
-
-
         $db  =  \App\Db::instance();
 
         $sql = 'DELETE FROM ' . static::TABLE . ' WHERE id=:id';
 
-        return $db->execute($sql, $params);
+        return $db->execute($sql, [':id' => $this->id]);
 
     }
 }

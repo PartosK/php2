@@ -5,9 +5,11 @@
     <title>Последние новости</title>
 </head>
 <body>
+
 <a href="/Admin" >Админка</a>
 </br>
 <a href="/AllNews" >Читать все новости</a>
+
 <ul>
      <?php  foreach ($data as $news ){   ?>
      <li>

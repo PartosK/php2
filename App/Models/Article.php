@@ -12,6 +12,7 @@ class Article
 
     public $title;
     public $lead;
+    public $author_id;
 
 
     public static function lastNews()
@@ -20,8 +21,12 @@ class Article
         $sql = 'SELECT * FROM ' . self::TABLE . ' WHERE 1 ORDER BY id DESC LIMIT 3';
         $res = $db->query($sql, [], self::class);
 
-        if ($res){ return $res;}
-        else{ return false;}
+        if ($res){
+            return $res;
+        }
+        else{
+            return false;
+        }
     }
 
     /**

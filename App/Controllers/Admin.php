@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 
 use App\Controller;
+use App\Models\Article;
+use App\Models\Authors;
 
 class Admin
   extends Controller
@@ -11,33 +13,35 @@ class Admin
 
     public function actionIndex()
     {
-        $this->view->data = \App\Models\Article::findAll();
-        $this->view->display(__DIR__ . '/../../App/Templates/admin.php');
+        $this->view->data = Article::findAll();
+        $this->view->display(__DIR__ . '/../Templates/admin/index.php');
 
     }
 
     public function actionInsert()
     {
-        $this->view->allauthors = \App\Models\Authors::findAll();
-        $this->view->display(__DIR__ . '/../../App/Templates/adminInsert.php');
+        $this->view->allauthors = Authors::findAll();
+        $this->view->display(__DIR__ . '/../Templates/admin/adminInsert.php');
     }
 
-    public function actionEdit()
+    public function actionUpdate()
     {
-        $update_id = $_GET['update'];
-        $this->view->allauthors = \App\Models\Authors::findAll();
-        $this->view->data = \App\Models\Article::findById($update_id);
-        $this->view->display(__DIR__ . '/../../App/Templates/adminEdit.php');
+        $id = $_GET['id'];
+        $this->view->allauthors = Authors::findAll();
+        $this->view->data = Article::findById($id);
+        $this->view->display(__DIR__ . '/../Templates/admin/adminUpdate.php');
     }
 
     public function actionSave()
     {
 
         if (isset($_POST['id'])) {
-            $id = $_POST['id'];
+
+            $news = Article::findById($_POST['id']);
         }
         else {
-            $id = null;
+            $news = new Article();
+
         }
 
         if ($_POST['author'] == 0) {
@@ -47,12 +51,8 @@ class Admin
             $author = $_POST['author'];
         }
 
-
-        $news = new \App\Models\Article();
-
         $news->title = $_POST['title'];
         $news->lead  = $_POST['lead'];
-        $news->id    = $id;
         $news->author_id   = $author;
         $news->save();
         header('Location: /Admin');
@@ -60,10 +60,8 @@ class Admin
 
     public function actionDeleted()
     {
-
-        $del = new \App\Models\Article();
-        $del->id = $_POST['deleted'];
-        $del->delete();
+        $news = Article::findById($_GET['id']);
+        $news->delete();
         header('Location: /Admin/');
 
     }
