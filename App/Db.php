@@ -19,8 +19,14 @@ class Db
        $user = $config->data['db']['user'];
        $pass = $config->data['db']['pass'];
 
-        $this->dbh = new \PDO('mysql:host='.$host.'; dbname='.$db , $user, $pass);
-        $this->dbh->exec("SET NAMES utf8");
+       try {
+           $this->dbh = new \PDO('mysql:host=' . $host . '; dbname=' . $db, $user, $pass);
+           $this->dbh->exec("SET NAMES utf8");
+       }
+       catch (\PDOException $e)
+       {
+           throw  new \App\DbException($e->getMessage(), $e->getCode());
+       }
     }
 
     public function query($sql ,$params=[], string $class)

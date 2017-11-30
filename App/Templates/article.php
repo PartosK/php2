@@ -5,11 +5,6 @@
     <title>Новость</title>
 </head>
 <body>
-<?php
-
-if ((isset($id) AND (false !== $data) ))
-{
-    ?>
     <header>
         <h1>
             <?php echo $data->title; ?>
@@ -22,11 +17,6 @@ if ((isset($id) AND (false !== $data) ))
                  {
                      echo $data->author->author;
                  } ?>
-<?php }
-else{   ?>
 
-Нет такой новости: <a href="/index.php" >Главная страница</a>
-
-<?php } ?>
 </body>
 </html>
