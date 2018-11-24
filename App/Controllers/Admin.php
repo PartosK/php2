@@ -36,12 +36,10 @@ class Admin
     {
 
         if (isset($_POST['id'])) {
-
             $news = Article::findById($_POST['id']);
         }
         else {
             $news = new Article();
-
         }
 
         if ($_POST['author'] == 0) {
